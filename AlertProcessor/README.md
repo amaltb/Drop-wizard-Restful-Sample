@@ -5,10 +5,10 @@ architecture and is written in Java using Drop-wizard framework. Alert
 instances are stored in the backed in a PostgreSql database.
 
 ## Architecture
-####Daigram
+#### Daigram
 ![Architecure Diagram](images/Arch-diagram.png)
 
-####APIs
+#### APIs
 
 (POST)
 
@@ -29,8 +29,8 @@ Content-Type = application/json<br/>
 }
 ```
 
-####ER Diagram
+#### ER Diagram
 ![ER Diagram](images/ERDiagram.png)
 
-##Setup
+## Setup
 To be filled.
