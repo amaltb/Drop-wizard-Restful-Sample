@@ -8,7 +8,7 @@ instances are stored in the backed in a PostgreSql database.
 #### Daigram
 ![Architecure Diagram](images/Arch-diagram.png)
 
-#### APIs
+#### API Contract
 
 (POST)
 
