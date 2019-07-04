@@ -6,7 +6,7 @@ instances are stored in the backed in a PostgreSql database.
 
 ## Architecture
 ####Daigram
-![Architecure Diagram](/Users/ambabu/Documents/PersonalDocuments/code-samples/DropWizardSample/AlertProcessor/images/Arch-diagram.png)
+![Architecure Diagram](images/Arch-diagram.png)
 
 ####APIs
 
@@ -30,7 +30,7 @@ Content-Type = application/json<br/>
 ```
 
 ####ER Diagram
-![ER Diagram](/Users/ambabu/Documents/PersonalDocuments/code-samples/DropWizardSample/AlertProcessor/images/ERDiagram.png)
+![ER Diagram](images/ERDiagram.png)
 
 ##Setup
 To be filled.
