@@ -3,6 +3,7 @@ package com.expedia.www.aurora.alertprocessor.entity;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Data
@@ -14,13 +15,9 @@ public class AlertModelState {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name = "key")
-    private String key;
-
-    @Column(name = "value")
-    private String value;
-
-    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    @JoinColumn(name = "alert_hash_id")
+    @OneToOne(mappedBy = "alertModelState")
     private AlertInstance alertInstance;
+
+    @OneToMany(mappedBy = "modelState")
+    private Set<ModelStateParams> params;
 }

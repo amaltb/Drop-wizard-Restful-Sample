@@ -45,8 +45,9 @@ public class AlertInstance implements Serializable {
     @JoinColumn(name = "algo_id")
     private AlgorithmDefinition algorithmDefinition;
 
-    @OneToMany(mappedBy = "alertInstance",cascade = CascadeType.ALL)
-    private Set<AlertModelState> alertModelState;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "model_state_id")
+    private AlertModelState alertModelState;
 
     @OneToMany(mappedBy = "instance", cascade = CascadeType.ALL)
     private Set<AlertSubscription> alertSubscriptions;
