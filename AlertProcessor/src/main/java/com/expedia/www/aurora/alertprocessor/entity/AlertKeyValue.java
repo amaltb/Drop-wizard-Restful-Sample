@@ -9,14 +9,14 @@ import javax.persistence.*;
 /**
  * @author - _amal
  *
- * Entity representng subscription channel associated with alert subscription.
+ * Entity representing ticker key -> value corresponding to an alert insatnce.
  */
 
 @Entity
 @Getter
 @Setter
-@Table(name = "alertdb.alert_subscription_channel")
-public class AlertSubscriptionChannel {
+@Table(name = "alertdb.alert_key_set")
+public class AlertKeyValue {
 
     @Id
     @Column(name = "id")
@@ -31,15 +31,11 @@ public class AlertSubscriptionChannel {
 
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
-    @JoinColumn(name = "subscription_id")
-    private AlertSubscription subscription;
+    @JoinColumn(name = "alert_hash_id")
+    private AlertInstance instance;
 
-
-    public String getKey() {
-        return key;
-    }
-
-    public String getValue() {
-        return value;
+    @Override
+    public String toString() {
+        return key + "->" + value;
     }
 }

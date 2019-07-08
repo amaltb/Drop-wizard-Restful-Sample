@@ -1,13 +1,22 @@
 package com.expedia.www.aurora.alertprocessor.entity;
 
-import lombok.Data;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Set;
 
+/**
+ * @author - _amal
+ *
+ * Entity representing alert algorithm.
+ */
+
 @Entity
-@Data
+@Getter
+@Setter
 @Table(name = "alertdb.algo_definition")
 public class AlgorithmDefinition implements Serializable {
 
@@ -22,6 +31,7 @@ public class AlgorithmDefinition implements Serializable {
     @Column(name = "alias_name")
     private String aliasName;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "algorithmDefinition")
     private Set<AlertInstance> instances;
 

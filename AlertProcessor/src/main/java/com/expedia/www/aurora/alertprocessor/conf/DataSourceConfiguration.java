@@ -7,6 +7,12 @@ import io.dropwizard.db.DataSourceFactory;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
+/**
+ * @author - _amal
+ *
+ * database configuration class.
+ */
+
 public class DataSourceConfiguration extends Configuration {
 
     @NotNull

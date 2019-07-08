@@ -1,5 +1,6 @@
 template: Hello, %s!
 defaultName: Stranger
+maxRetryCount: 3
 
 database:
   driverClass: org.postgresql.Driver

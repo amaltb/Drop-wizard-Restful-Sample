@@ -1,10 +1,18 @@
 package com.expedia.www.aurora.alertprocessor.entity;
 
-import lombok.Data;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Set;
+
+/**
+ * @author - _amal
+ *
+ * Entity represnting alert_type dimension.
+ */
 
 @Entity
 @Table(name = "alertdb.alert_type")
@@ -12,7 +20,8 @@ import java.util.Set;
         @NamedQuery(name = "com.ab.example.dropwizardsample.entity.AlertType.findAll",
                 query = "select a from AlertType a")
 })
-@Data
+@Getter
+@Setter
 public class AlertType implements Serializable {
 
     @Id
@@ -23,6 +32,11 @@ public class AlertType implements Serializable {
     @Column(name = "alert_type_name", unique = true)
     private String alertTypeName;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "alertType")
     private Set<AlertInstance> instances;
+
+   /* @JsonIgnore
+    @OneToMany(mappedBy = "alertType")
+    private Set<AlertSubscription> subscriptions;*/
 }
