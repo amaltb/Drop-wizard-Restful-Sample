@@ -30,7 +30,7 @@ Content-Type = application/json<br/>
 ```
 
 #### ER Diagram
-![ER Diagram](documents/images/ER-Diagram.png)
+![ER Diagram](documents/images/ER-diagram.png)
 
 ## Setup
 To be filled.
