@@ -1,0 +1,12 @@
+curl -X POST \
+  'https://localhost:8443/api/alerts/report?startTime=2019-06-30%2023:53:49&endTime=2019-07-01%2022:53:49' \
+  -H 'Cache-Control: no-cache' \
+  -H 'Content-Type: application/json' \
+  -H 'Postman-Token: 7596d6d0-0f4e-41db-b57d-3b378fe1df2c' \
+  -d '{
+	"anomaly_template_alias": "flight alert template",
+	"key_set": {
+		"operation name" : ["GET"],
+		"service name": ["Booking"]
+	}
+}'
