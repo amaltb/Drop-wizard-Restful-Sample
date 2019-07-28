@@ -16,12 +16,12 @@
         <java.version>1.8</java.version>
         <project.jdk.version>${java.version}</project.jdk.version>
         <mainClass></mainClass>
-        <bom.version>${project.parent.version}</bom.version>
+        <bom.version>0.1.59</bom.version>
         <lombok.version>1.16.18</lombok.version>
     </properties>
 
 
-    <dependencyManagement>
+    <!--<dependencyManagement>
         <dependencies>
             <dependency>
                 <groupId>com.expedia.www.platform</groupId>
@@ -31,15 +31,15 @@
                 <type>pom</type>
             </dependency>
         </dependencies>
-    </dependencyManagement>
+    </dependencyManagement>-->
 
     <dependencies>
-        <dependency>
+        <!--<dependency>
             <groupId>com.expedia.www.platform</groupId>
             <artifactId>platform-isactive</artifactId>
             <version>1.1.9</version>
             <scope>compile</scope>
-        </dependency>
+        </dependency>-->
 
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -64,7 +64,7 @@
         <dependency>
             <groupId>io.dropwizard.metrics</groupId>
             <artifactId>metrics-core</artifactId>
-            <version>3.1.2</version>
+            <version>3.2.0</version>
         </dependency>
 
         <!-- postgresql jdbc driver -->
@@ -72,12 +72,6 @@
             <groupId>postgresql</groupId>
             <artifactId>postgresql</artifactId>
             <version>9.1-901-1.jdbc4</version>
-        </dependency>
-        <dependency>
-            <groupId>com.ab.example</groupId>
-            <artifactId>DropWizardSample</artifactId>
-            <version>1.0-SNAPSHOT</version>
-            <scope>compile</scope>
         </dependency>
         <!-- https://mvnrepository.com/artifact/com.vladmihalcea/hibernate-types-52 -->
         <dependency>
@@ -96,6 +90,7 @@
             <artifactId>aws-java-sdk-ses</artifactId>
             <version>1.11.587</version>
         </dependency>
+
     </dependencies>
 
     <build>

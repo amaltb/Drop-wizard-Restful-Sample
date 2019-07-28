@@ -1,5 +1,3 @@
-template: Hello, %s!
-defaultName: Stranger
 maxRetryCount: 3
 
 database:

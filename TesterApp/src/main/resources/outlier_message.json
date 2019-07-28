@@ -1,0 +1,57 @@
+{
+  "modelDefinition": {
+    "alias": "flight alert template",
+    "modelDefinitionTags": {
+      "queue": "ticker",
+      "metricName": "5min-count",
+      "fields": {
+        "templateName": ["browserOnly22:countMetric:{browser,domain}"],
+        "metricType": ["count"],
+        "domain": ["exist"],
+        "browser": ["Chrome"]
+      }
+    },
+    "algoDefinition": {
+      "modelBuilderName": "SIMPLE_THRESHOLD",
+      "modelParameters": {
+        "threshold": "0",
+        "direction": "UP",
+        "snoozeWindow": "1"
+      }
+    }
+  },
+  "auroraMessage": {
+    "keys": {
+      "browser": "Chrome",
+      "domain": "exist",
+      "metricType": "count",
+      "queue": "clientlog",
+      "templateName": "browserOnly22:countMetric:{browser,domain}"
+    },
+    "queue": "ticker",
+    "metricName": "5min-count",
+    "dataPoint": {
+      "value": 204.0,
+      "timestamp": 1563432900000,
+      "volume": -1
+    }
+  },
+  "subscriptions": [{
+    "emailId": [],
+    "slackChannelId": ["dplr-sandbox"],
+    "snsTopicArn": [],
+    "messageText": "Testing alert triggered",
+    "disabled": true,
+    "alertTypes": [],
+    "config": null
+  }],
+  "message": "Threshold : 0.0",
+  "alertType": "ERROR",
+  "alertTimestamp": 1563433073929,
+  "modelState": {
+    "differenceFromThreshold": "204.00",
+    "percentChangeFromThreshold": "Threshold is 0. Cannot provide percentage change.",
+    "threshold": "0.0",
+    "direction": "increased"
+  }
+}

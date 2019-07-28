@@ -16,10 +16,6 @@ import java.util.Set;
 
 @Entity
 @Table(name = "alertdb.alert_type")
-@NamedQueries({
-        @NamedQuery(name = "com.ab.example.dropwizardsample.entity.AlertType.findAll",
-                query = "select a from AlertType a")
-})
 @Getter
 @Setter
 public class AlertType implements Serializable {
@@ -35,8 +31,4 @@ public class AlertType implements Serializable {
     @JsonIgnore
     @OneToMany(mappedBy = "alertType")
     private Set<AlertInstance> instances;
-
-   /* @JsonIgnore
-    @OneToMany(mappedBy = "alertType")
-    private Set<AlertSubscription> subscriptions;*/
 }

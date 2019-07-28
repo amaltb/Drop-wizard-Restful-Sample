@@ -41,10 +41,10 @@ public class AuroraEmailNotifier implements AuroraNotifier {
 
     @Override
     public void notifyAlert(NotificationSubscription subscription, String message) {
-        if (subscription.getEmailId() == null || subscription.getEmailId().size() == 0) {
+        if (subscription.getEmailIds() == null || subscription.getEmailIds().size() == 0) {
             return;
         }
-        final List<String> emailIds = subscription.getEmailId().stream().filter(StringUtils::isNotBlank).collect(Collectors.toList());
+        final List<String> emailIds = subscription.getEmailIds().stream().filter(StringUtils::isNotBlank).collect(Collectors.toList());
         if (!emailIds.isEmpty()) {
             MessagePushToEmailMeter.mark();
             final Destination destination = new Destination().withToAddresses(emailIds);

@@ -42,8 +42,8 @@ public class AuroraSNSNotifier implements AuroraNotifier {
     @Override
     public void notifyAlert(NotificationSubscription subscription, String message) {
 
-        if (subscription.getSnsTopicArn() != null && subscription.getSnsTopicArn().size() > 0) {
-            for (final String snsTopic : subscription.getSnsTopicArn()) {
+        if (subscription.getSnsTopicArns() != null && subscription.getSnsTopicArns().size() > 0) {
+            for (final String snsTopic : subscription.getSnsTopicArns()) {
 
                 if (snsTopic.isEmpty()) {
                     continue;

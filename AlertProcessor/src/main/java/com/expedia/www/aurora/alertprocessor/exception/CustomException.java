@@ -1,6 +1,6 @@
 package com.expedia.www.aurora.alertprocessor.exception;
 
-import lombok.Data;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import java.io.Serializable;
 
@@ -10,9 +10,9 @@ import java.io.Serializable;
  * class to wrap exception details with out leaking system vulnerabilities.
  */
 
-@Data
+@JsonIgnoreProperties({"cause", "stackTrace", "localizedMessage", "suppressed"})
 public class CustomException extends Throwable implements Serializable {
-    private int statusCode;
+    private int code;
     private String message;
     private String cause;
 
@@ -23,16 +23,21 @@ public class CustomException extends Throwable implements Serializable {
 
     public CustomException(int status, String message) {
         this.message = message;
-        this.statusCode = status;
+        this.code = status;
     }
 
     public CustomException(int status, String message, Exception e) {
-        this.statusCode = status;
+        this.code = status;
         this.message = message;
         this.cause = e.getMessage();
     }
 
     public int getStatus() {
-        return statusCode;
+        return code;
+    }
+
+    @Override
+    public String getMessage() {
+        return message;
     }
 }

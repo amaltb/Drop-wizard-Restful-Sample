@@ -6,6 +6,7 @@ import com.expedia.www.aurora.alertprocessor.output.AuroraNotifier;
 
 import java.sql.Timestamp;
 import java.util.*;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 /**
@@ -16,14 +17,25 @@ import java.util.stream.Collectors;
 
 public class ApplicationUtil {
 
+    public static final String NEWLINE = System.lineSeparator();
+
     /**
      * converts String to java.sql.timestamp, if no timestamp given return current timestamp.
      *
      * @param ts
      * @return
      */
-    public static Timestamp validateTimeStamp(Optional<String> ts) {
+    public static Timestamp getTimeStamp(Optional<String> ts) {
         return ts.map(Timestamp::valueOf).orElseGet(() -> new Timestamp(System.currentTimeMillis()));
+    }
+
+    public static boolean validateRequest(Map<Predicate,Object> reqValidations) {
+        for (Predicate predicate: reqValidations.keySet()) {
+            if(!predicate.test(reqValidations.get(predicate))){
+                return false;
+            }
+        }
+        return true;
     }
 
     /**
@@ -87,7 +99,7 @@ public class ApplicationUtil {
             final Set<AlertSubscription> subscriptions = instance.getAlertSubscriptions();
 
             for (final AlertSubscription alertSubscription: subscriptions) {
-                if(alertSubscription.getDisabled() || !getAlertTypesSubscribed(alertSubscription).contains(alertType)){
+                if(alertSubscription.isDisabled() || !getAlertTypesSubscribed(alertSubscription).contains(alertType)){
                     continue;
                 }
                 else{
@@ -142,18 +154,18 @@ public class ApplicationUtil {
                                         Map<String, List<String>> requestKeySet, List<AlertInstance> alertInstances)
     {
         final String reportTemplate = "There are %d alerts raised for the template %s during the period %s to %s. " +
-                "Details are attached below\n\n" +
-                "Anomaly Template .Alias: %s\nTime Period: %s to %s\nFilter Criteria: %s\n\n" +
-                "CreatedOn\t|\tAlertModelState\t|\tAlertKeySet\n";
+                NEWLINE + "Details:" + NEWLINE +
+                "Anomaly Template Alias: %s" + NEWLINE + "Time Period: %s to %s" + NEWLINE + "Filter Criteria: %s" +
+                NEWLINE + NEWLINE + "CreatedOn\t|\tAlertModelState\t|\tAlertKeySet" + NEWLINE;
 
         final StringBuilder reportBuilder = new StringBuilder();
-        reportBuilder.append(String.format(reportTemplate, templateAliasName, st.toString(), et.toString(),
-                templateAliasName, st.toString(), et.toString(), requestKeySet));
+        reportBuilder.append(String.format(reportTemplate, alertInstances.size(), templateAliasName, st.toString(),
+                et.toString(), templateAliasName, st.toString(), et.toString(), requestKeySet));
 
         for (final AlertInstance instance: alertInstances) {
             final Timestamp createdOn = instance.getCreatedOn();
             final AlertModelState modelState = instance.getAlertModelState();
-            final AlertKeyValue keyValue = instance.getAlertKeyValues();
+            final Set<AlertKeyValue> keyValue = instance.getAlertKeyValues();
 
             reportBuilder
                     .append(createdOn)
@@ -161,7 +173,7 @@ public class ApplicationUtil {
                     .append(modelState)
                     .append("\t\t")
                     .append(keyValue)
-                    .append("\n");
+                    .append(NEWLINE);
         }
         return reportBuilder.toString();
     }

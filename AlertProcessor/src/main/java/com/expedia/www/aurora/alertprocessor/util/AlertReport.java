@@ -12,11 +12,11 @@ import java.sql.Timestamp;
 
 @Data
 public class AlertReport {
-    private Timestamp generatedAt;
+    private String generatedAt;
     private String report;
 
     public AlertReport(String report) {
-        this.generatedAt = new Timestamp(System.currentTimeMillis());
+        this.generatedAt = new Timestamp(System.currentTimeMillis()).toString();
         this.report = !report.isEmpty() ? report : "No alerts raised for given template during this period.";
     }
 }

@@ -30,4 +30,9 @@ public class AlertModelState {
 
     @OneToMany(mappedBy = "modelState")
     private Set<ModelStateParams> params;
+
+    @Override
+    public String toString() {
+        return params.toString();
+    }
 }

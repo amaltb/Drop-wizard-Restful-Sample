@@ -11,6 +11,8 @@ public class Test {
         Timestamp ts = new Timestamp(System.currentTimeMillis());
         Timestamp es = new Timestamp(System.currentTimeMillis());
 
+        System.out.println(es);
+
         System.out.println(ts.getTime() - es.getTime());
         System.out.println(ts.equals(es));
 

@@ -10,6 +10,7 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>AlertProcessor</module>
+        <module>TesterApp</module>
     </modules>
 
     <properties>
@@ -33,6 +34,11 @@
         <dependency>
             <groupId>io.dropwizard</groupId>
             <artifactId>dropwizard-auth</artifactId>
+            <version>${dropwizard.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.dropwizard</groupId>
+            <artifactId>dropwizard-client</artifactId>
             <version>${dropwizard.version}</version>
         </dependency>
     <!-- postgresql jdbc driver -->

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>DropWizardSample</artifactId>
+        <groupId>com.ab.example</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>TesterApp</artifactId>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.expedia.www.doppler</groupId>
+            <artifactId>commons</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>io.dropwizard</groupId>
+                    <artifactId>dropwizard-core</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>io.dropwizard</groupId>
+                    <artifactId>dropwizard-hibernate</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>io.dropwizard</groupId>
+                    <artifactId>dropwizard-testing</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>com.fasterxml.jackson.core</groupId>
+                    <artifactId>jackson-databind</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+    </dependencies>
+
+</project>

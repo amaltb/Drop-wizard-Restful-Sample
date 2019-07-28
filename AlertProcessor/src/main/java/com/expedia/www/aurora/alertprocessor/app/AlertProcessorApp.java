@@ -81,7 +81,7 @@ public class AlertProcessorApp extends Application<AlertProcessorConfiguration> 
     }
 
     private List<AuroraNotifier> initializeNotifiers(AlertProcessorConfiguration config) {
-        final AuroraRequestExecutor auroraRequestExecutor = new AuroraRequestExecutor(
+        /*final AuroraRequestExecutor auroraRequestExecutor = new AuroraRequestExecutor(
                 Integer.parseInt(config.getRequestRetryCount()));
         final ArrayList<AuroraNotifier> notifiers = new ArrayList<>();
 
@@ -90,6 +90,7 @@ public class AlertProcessorApp extends Application<AlertProcessorConfiguration> 
         notifiers.add(new AuroraSNSNotifier(auroraRequestExecutor));
 
         new Thread(auroraRequestExecutor).start();
-        return notifiers;
+        return notifiers;*/
+        return null;
     }
 }

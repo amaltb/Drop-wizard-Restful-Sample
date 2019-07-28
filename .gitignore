@@ -1,2 +1,5 @@
 APISigning/*
 .idea/*
+target/*
+AlertProcessor/target/*
+TesterApp/target/*
